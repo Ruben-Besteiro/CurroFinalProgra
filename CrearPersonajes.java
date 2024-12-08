@@ -4,9 +4,10 @@ import javax.swing.JOptionPane;
 
 
 public class CrearPersonajes {
+	public static ArrayList<Personaje> personajes;
 	
 	public static void CreacionDePersonajes() {
-		ArrayList<Personaje> personajes = new ArrayList<Personaje>();
+		personajes = new ArrayList<Personaje>();
 		// Antes de empezar la batalla tendría que pasar lo siguiente:
 		// El programa chequearía la clase
 		
@@ -63,6 +64,7 @@ public class CrearPersonajes {
 				JOptionPane.showMessageDialog(null, "No has introducido un número válido, por lo que se te asignará el caballero de 10 de daño y 100 de vida");
 			}
 			JOptionPane.showMessageDialog(null, personajes.get(i).toString());
+			//personajes.get(i).ataque(0);		//PRUEBA
 		}
 	}
 }
