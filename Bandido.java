@@ -3,22 +3,22 @@ package CurroFinal;
 public class Bandido extends Personaje {
 	
 	public Bandido(String herramienta) {
-		this.clase = "bandido";
-		this.vida = 40;
-		this.herramienta = herramienta;
+		this.setClase("bandido");
+		this.setVida(40);
+		this.setHerramienta(herramienta);
 		
 		switch(herramienta) {
 		case "hacha":
-			this.daño = 100;
+			this.setDaño(100);
 			break;
 		case "espada":
-			this.daño = 80;
+			this.setDaño(80);
 			break;
 		case "lanza":
-			this.daño = 60;
+			this.setDaño(60);
 			break;
 		case "cuchillo":
-			this.daño = 40;
+			this.setDaño(40);
 		}
 		
 		super.toString();

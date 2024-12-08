@@ -8,8 +8,6 @@ public class CrearPersonajes {
 	
 	public static void CreacionDePersonajes() {
 		personajes = new ArrayList<Personaje>();
-		// Antes de empezar la batalla tendría que pasar lo siguiente:
-		// El programa chequearía la clase
 		
 		int numHumanos = 0;
 		try {
@@ -64,7 +62,7 @@ public class CrearPersonajes {
 				JOptionPane.showMessageDialog(null, "No has introducido un número válido, por lo que se te asignará el caballero de 10 de daño y 100 de vida");
 			}
 			JOptionPane.showMessageDialog(null, personajes.get(i).toString());
-			//personajes.get(i).ataque(0);		//PRUEBA
+			personajes.get(i).ataque(0);		// Esto es una prueba. Lo que hace es que cada vez que se instancie un jugador use su ataque contra el jugador 0, para probar que la función de ataque funciona
 		}
 	}
 }

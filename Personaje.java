@@ -3,10 +3,10 @@ package CurroFinal;
 import javax.swing.JOptionPane;
 
 public class Personaje {
-	String clase;		// Todas estas cosas van a ir cambiando según el personaje
-	String herramienta;
-	int vida;
-	int daño;
+	private String clase;		// Todas estas cosas van a ir cambiando según el personaje
+	private String herramienta;
+	private int vida;
+	private int daño;
 	
 	void ataque(int numJugador) {		// La función de ataque es la misma para todas las clases
 		CrearPersonajes.personajes.get(numJugador).vida -= this.daño;
@@ -19,5 +19,37 @@ public class Personaje {
 	
 	public String toString() {
 		return ("Se ha creado un jugador cuya clase es " + this.clase + " (" + this.vida + " de vida) y cuya herramienta es " + this.herramienta + " (" + this.daño + " de daño) exitosamente");
+	}
+	
+	String getClase() {
+		return this.clase;
+	}
+	
+	void setClase(String clase) {
+		this.clase = clase;
+	}
+	
+	String getHerramienta() {
+		return this.herramienta;
+	}
+	
+	void setHerramienta(String herramienta) {
+		this.herramienta = herramienta;
+	}
+	
+	int getVida() {
+		return this.vida;
+	}
+	
+	void setVida(int vida) {
+		this.vida = vida;
+	}
+	
+	int getDaño() {
+		return daño;
+	}
+	
+	void setDaño(int daño) {
+		this.daño = daño;
 	}
 }
