@@ -30,12 +30,6 @@ public class Personaje {
 		// Esto está vacío porque cada clase tiene su propia habilidad
 	}
 	
-	void checkVida() {
-		if (this.getVida() <= 0) {
-			// Código para borrar el objeto
-		}
-	}
-	
 	// GETTERS Y SETTERS
 	
 	String getClase() {
