@@ -20,7 +20,9 @@ public class Mago extends Personaje {
 		case "cuchillo":
 			this.setDaño(40);
 		}
-		
-		super.toString();
+	}
+	
+	void habilidad() {
+		// Bola de fuego
 	}
 }

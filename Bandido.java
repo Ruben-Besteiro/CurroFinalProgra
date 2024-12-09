@@ -1,4 +1,5 @@
 package CurroFinal;
+import javax.swing.JOptionPane;
 
 public class Bandido extends Personaje {
 	
@@ -20,7 +21,12 @@ public class Bandido extends Personaje {
 		case "cuchillo":
 			this.setDaño(40);
 		}
-		
-		super.toString();
+	}
+	
+	void habilidad() {
+		for (int i = 0; i < CrearPersonajes.personajes.size(); i++) {
+			CrearPersonajes.personajes.get(i).setVida(CrearPersonajes.personajes.get(i).getVida()-2);		// Hace 2 de daño a todo el lobby
+			JOptionPane.showMessageDialog(null, "El " + this.getClase() + " ha atacado al jugador " + i + " con un daño de " + this.getDaño() + ". Le queda " + CrearPersonajes.personajes.get(i).getVida() + " de vida");
+		}
 	}
 }

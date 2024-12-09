@@ -11,7 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class MenuJuego {
+public class MenuJuego {			// Todo esto es hecho por Jaime
 
 	private JFrame ventana;	//PARA LA VENTANA
 	private JPanel Panel;	//PARA EL PANEL
@@ -140,7 +140,7 @@ public class MenuJuego {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				CrearPersonajes.CreacionDePersonajes();             // Código de Rubi
+				CrearPersonajes.CreacionDePersonajes();             // Aquí pasa a ejecutarse lo de Rubi
 			}
 	    });
 

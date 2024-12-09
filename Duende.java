@@ -1,4 +1,5 @@
 package CurroFinal;
+import javax.swing.JOptionPane;
 
 public class Duende extends Personaje {
 	
@@ -20,7 +21,10 @@ public class Duende extends Personaje {
 		case "cuchillo":
 			this.setDaño(40);
 		}
-		
-		super.toString();
+	}
+	
+	void habilidad() {
+		JOptionPane.showMessageDialog(null, "El duende ha activado su escudo y será inmune al daño el próximo turno");
+		this.habilidadActivada = true;
 	}
 }
