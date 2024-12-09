@@ -24,12 +24,16 @@ public class Mago extends Personaje {
 		}
 	}
 	
-	void habilidad() {		// La habilidad del mago es diferente porque hay que especificar a qué oponente va a afectar
-		/* Aquí habría que pedirle al usuario a quién hay que castearle la bola
+	void habilidad() {
+		int numJugador = Integer.parseInt(JOptionPane.showInputDialog(null, "Elige a qué jugador lanzarle una bola de fuego"));
+		try {
+			CrearPersonajes.personajes.get(numJugador).setVida(CrearPersonajes.personajes.get(numJugador).getVida()-50);
+			JOptionPane.showMessageDialog(null, "El mago le ha lanzado una bola de fuego al jugador " + numJugador + " y le ha hecho 50 de daño. Le queda " + CrearPersonajes.personajes.get(numJugador).getVida());
+			CrearPersonajes.personajes.get(numJugador).setBolaDeFuego(true);
+		} catch (NullPointerException e) {
+			JOptionPane.showMessageDialog(null, "Has elegido lanzarle una bola de fuego a un cadáver, por lo que se te ha saltado el turno");
+		}
 		
-		CrearPersonajes.personajes.get(numJugador).setVida(CrearPersonajes.personajes.get(numJugador).getVida()-50);
-		JOptionPane.showMessageDialog(null, "El mago ha casteado una bola de fuego en el jugador " + numJugador + " y le ha hecho 50 de daño. Le queda " + CrearPersonajes.personajes.get(numJugador).getVida());
-		CrearPersonajes.personajes.get(numJugador).bolaDeFuego = true;*/
-		this.bolaDeFuego = false;
+		this.setBolaDeFuego(false);
 	}
 }

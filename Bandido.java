@@ -28,6 +28,6 @@ public class Bandido extends Personaje {
 			CrearPersonajes.personajes.get(i).setVida(CrearPersonajes.personajes.get(i).getVida()-2);		// Hace 2 de daño a todo el lobby
 			JOptionPane.showMessageDialog(null, "El " + this.getClase() + " ha atacado al jugador " + i + " con un daño de " + this.getDaño() + ". Le queda " + CrearPersonajes.personajes.get(i).getVida() + " de vida");
 		}
-		this.bolaDeFuego = false;
+		this.setBolaDeFuego(false);
 	}
 }

@@ -3,8 +3,8 @@ import javax.swing.JOptionPane;
 
 
 public class Personaje {
-	boolean habilidadActivada = false;		// Este booleano lo usarán las habilidades que afectan al siguiente turno
-	boolean bolaDeFuego = false;			// Si en el turno anterior un mago usó su habilidad contra el jugador, esto es true
+	private boolean habilidadActivada = false;		// Este booleano lo usarán las habilidades que afectan al siguiente turno
+	private boolean bolaDeFuego = false;			// Si en el turno anterior un mago usó su habilidad contra el jugador, esto es true
 	
 	private String clase;		// Todas estas cosas van a ir cambiando según el personaje
 	private String herramienta;
@@ -13,16 +13,16 @@ public class Personaje {
 	
 	void ataque(int numJugador) {
 		if (!this.bolaDeFuego) {
-			try {
+			try {			// Esto se ejecuta cuando el jugador ataca
 				CrearPersonajes.personajes.get(numJugador).setVida(CrearPersonajes.personajes.get(numJugador).getVida() - this.getDaño());
 				JOptionPane.showMessageDialog(null, "El " + this.getClase() + " ha atacado al jugador " + numJugador + " con un daño de " + this.getDaño() + ". Le queda " + CrearPersonajes.personajes.get(numJugador).getVida() + " de vida");
-			} catch (Throwable e) {		// Quise poner NullPointerException pero no se quería resolver como un tipo
-				JOptionPane.showMessageDialog(null, "Has intentado atacarle a un jugador muerto, por lo que se te saltará el turno");
+			} catch (NullPointerException e) {
+				JOptionPane.showMessageDialog(null, "Has intentado atacarle a un cadáver, por lo que se te saltará el turno");
 			}
-		} else {
+		} else {			// Si el jugador está quemado, el ataque no surte efecto y recibes daño
 			this.setVida(this.getVida()-30);
 			JOptionPane.showMessageDialog(null, "Has intentado atacar estando quemado, por lo que recibes 30 de daño. Te queda " + this.getVida() + " de vida");
-			this.bolaDeFuego = false;
+			this.setBolaDeFuego(false);
 		}
 	}
 	
@@ -35,6 +35,8 @@ public class Personaje {
 			// Código para borrar el objeto
 		}
 	}
+	
+	// GETTERS Y SETTERS
 	
 	String getClase() {
 		return this.clase;
@@ -68,7 +70,25 @@ public class Personaje {
 		this.daño = daño;
 	}
 	
+	boolean getHabilidadActivada() {
+		return this.habilidadActivada;
+	}
+	
+	void setHabilidadActivada(boolean habilidadActivada) {
+		this.habilidadActivada = habilidadActivada;
+	}
+	
+	boolean getBolaDeFuego() {
+		return this.bolaDeFuego;
+	}
+	
+	void setBolaDeFuego(boolean bolaDeFuego) {
+		this.bolaDeFuego = bolaDeFuego;
+	}
+	
+	// OTROS MÉTODOS
+	
 	public String ToString(int posicion) {
-		return ("Se ha creado un jugador cuya clase es " + this.clase + " (" + this.vida + " de vida) y cuya herramienta es " + this.herramienta + " (" + this.daño + " de daño) en la posición " + posicion + " exitosamente");
+		return ("El jugador " + posicion + " es un " + this.clase + " (" + this.vida + " de vida) cuya herramienta es " + this.herramienta + " (" + this.daño + " de daño)");
 	}
 }

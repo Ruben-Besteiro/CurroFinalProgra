@@ -69,6 +69,8 @@ public class CrearPersonajes {					// Todo esto es hecho por Rubi
 		case 9:
 			personajes.add(new Caballero("hacha"));
 			break;
+		default:
+			personajes.add(new Caballero("espada"));		// Si por la razón que sea hay un error, seleccionará esta opción
 		}
 		JOptionPane.showMessageDialog(null, personajes.get(i).ToString(i));
 	}
