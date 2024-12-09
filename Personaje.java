@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 
 public class Personaje {
 	boolean habilidadActivada = false;		// Este booleano lo usarán las habilidades que afectan al siguiente turno
+	boolean bolaDeFuego = false;			// Si en el turno anterior un mago usó su habilidad contra el jugador, esto es true
 	
 	private String clase;		// Todas estas cosas van a ir cambiando según el personaje
 	private String herramienta;
@@ -11,11 +12,17 @@ public class Personaje {
 	private int daño;
 	
 	void ataque(int numJugador) {
-		try {
-			CrearPersonajes.personajes.get(numJugador).setVida(CrearPersonajes.personajes.get(numJugador).getVida() - this.getDaño());
-			JOptionPane.showMessageDialog(null, "El " + this.getClase() + " ha atacado al jugador " + numJugador + " con un daño de " + this.getDaño() + ". Le queda " + CrearPersonajes.personajes.get(numJugador).getVida() + " de vida");
-		} catch (Throwable e) {		// Quise poner NullPointerException pero no se quería resolver como un tipo
-			JOptionPane.showMessageDialog(null, "Has intentado atacarle a un jugador muerto, por lo que se te saltará el turno");
+		if (!this.bolaDeFuego) {
+			try {
+				CrearPersonajes.personajes.get(numJugador).setVida(CrearPersonajes.personajes.get(numJugador).getVida() - this.getDaño());
+				JOptionPane.showMessageDialog(null, "El " + this.getClase() + " ha atacado al jugador " + numJugador + " con un daño de " + this.getDaño() + ". Le queda " + CrearPersonajes.personajes.get(numJugador).getVida() + " de vida");
+			} catch (Throwable e) {		// Quise poner NullPointerException pero no se quería resolver como un tipo
+				JOptionPane.showMessageDialog(null, "Has intentado atacarle a un jugador muerto, por lo que se te saltará el turno");
+			}
+		} else {
+			this.setVida(this.getVida()-30);
+			JOptionPane.showMessageDialog(null, "Has intentado atacar estando quemado, por lo que recibes 30 de daño. Te queda " + this.getVida() + " de vida");
+			this.bolaDeFuego = false;
 		}
 	}
 	
@@ -62,6 +69,6 @@ public class Personaje {
 	}
 	
 	public String ToString(int posicion) {
-		return ("Se ha creado un jugador cuya clase es " + this.clase + " (" + this.vida + " de vida) y cuya herramienta es " + this.herramienta + " (" + this.daño + " de daño) en la posición " + (posicion+1) + " exitosamente");
+		return ("Se ha creado un jugador cuya clase es " + this.clase + " (" + this.vida + " de vida) y cuya herramienta es " + this.herramienta + " (" + this.daño + " de daño) en la posición " + posicion + " exitosamente");
 	}
 }

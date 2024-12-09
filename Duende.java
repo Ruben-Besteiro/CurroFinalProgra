@@ -10,21 +10,22 @@ public class Duende extends Personaje {
 		
 		switch(herramienta) {
 		case "hacha":
-			this.setDaño(100);
+			this.setDaño(50);
 			break;
 		case "espada":
-			this.setDaño(80);
+			this.setDaño(40);
 			break;
 		case "lanza":
-			this.setDaño(60);
+			this.setDaño(30);
 			break;
 		case "cuchillo":
-			this.setDaño(40);
+			this.setDaño(20);
 		}
 	}
 	
 	void habilidad() {
 		JOptionPane.showMessageDialog(null, "El duende ha activado su escudo y será inmune al daño el próximo turno");
 		this.habilidadActivada = true;
+		this.bolaDeFuego = false;
 	}
 }

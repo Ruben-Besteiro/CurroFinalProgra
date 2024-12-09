@@ -10,37 +10,42 @@ public class Caballero extends Personaje {
 		
 		switch(herramienta) {
 		case "hacha":
-			this.setDaño(100);
+			this.setDaño(50);
 			break;
 		case "espada":
-			this.setDaño(80);
+			this.setDaño(40);
 			break;
 		case "lanza":
-			this.setDaño(60);
+			this.setDaño(30);
 			break;
 		case "cuchillo":
-			this.setDaño(40);
+			this.setDaño(20);
 		}
 	}
 	
-	@Override
 	void ataque(int numJugador) {		// El ataque básico del caballero es distinto según si el ataque es o no cargado
-		try {
-			if (habilidadActivada) {
-				CrearPersonajes.personajes.get(numJugador).setVida(CrearPersonajes.personajes.get(numJugador).getVida() - CrearPersonajes.personajes.get(numJugador).getDaño() * 2);
-				JOptionPane.showMessageDialog(null, "El " + this.getClase() + " ha atacado al jugador " + numJugador + " con un daño de " + (this.getDaño() * 2) + ". Le queda " + CrearPersonajes.personajes.get(numJugador).getVida() + " de vida");
-				this.habilidadActivada = false;
-			} else {
-				CrearPersonajes.personajes.get(numJugador).setVida(CrearPersonajes.personajes.get(numJugador).getVida() - this.getDaño());
-				JOptionPane.showMessageDialog(null, "El " + this.getClase() + " ha atacado al jugador " + numJugador + " con un daño de " + this.getDaño() + ". Le queda " + CrearPersonajes.personajes.get(numJugador).getVida() + " de vida");
+		if (!this.bolaDeFuego) {
+			try {
+				if (habilidadActivada) {
+					CrearPersonajes.personajes.get(numJugador).setVida(CrearPersonajes.personajes.get(numJugador).getVida() - CrearPersonajes.personajes.get(numJugador).getDaño() * 2);
+					JOptionPane.showMessageDialog(null, "El " + this.getClase() + " ha atacado al jugador " + numJugador + " con un daño de " + (this.getDaño() * 2) + ". Le queda " + CrearPersonajes.personajes.get(numJugador).getVida() + " de vida");
+					this.habilidadActivada = false;
+				} else {
+					CrearPersonajes.personajes.get(numJugador).setVida(CrearPersonajes.personajes.get(numJugador).getVida() - this.getDaño());
+					JOptionPane.showMessageDialog(null, "El " + this.getClase() + " ha atacado al jugador " + numJugador + " con un daño de " + this.getDaño() + ". Le queda " + CrearPersonajes.personajes.get(numJugador).getVida() + " de vida");
+				}
+			} catch (Throwable e) {
+				JOptionPane.showMessageDialog(null, "Has intentado atacarle a un jugador muerto, por lo que se te saltará el turno");
 			}
-		} catch (Throwable e) {
-			JOptionPane.showMessageDialog(null, "Has intentado atacarle a un jugador muerto, por lo que se te saltará el turno");
+		} else {
+			this.setVida(this.getVida()-30);
+			JOptionPane.showMessageDialog(null, "Has intentado atacar estando quemado, por lo que recibes 30 de daño. Te queda " + this.getVida() + " de vida");
 		}
 	}
 	
 	void habilidad() {
 		JOptionPane.showMessageDialog(null, "El caballero ha cargado su ataque y hará el doble de daño en el siguiente turno");
 		this.habilidadActivada = true;
+		this.bolaDeFuego = false;
 	}
 }

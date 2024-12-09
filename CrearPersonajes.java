@@ -25,7 +25,7 @@ public class CrearPersonajes {					// Todo esto es hecho por Rubi
 		int clase;
 		
 		for (int i = 0; i < numHumanos; i++) {		// Esto es para que los humanos escojan su clase
-			clase = Integer.parseInt(JOptionPane.showInputDialog(null, "Jugador " + (i+1) + ", elige personaje\n" + "1: Caballero con espada\n" + "2: Mago con lanza\n" + "3: Bandido con hacha\n" + "4: Duende con cuchillo\n" + "5: Mago con hacha\n" + "6: Duende con hacha\n" + "7: Caballero con lanza\n" + "8: Bandido con cuchillo\n" + "9: Mago con espada\n" + "10: Caballero con hacha"));
+			clase = Integer.parseInt(JOptionPane.showInputDialog(null, "Jugador " + i + ", elige personaje\n" + "0: Caballero con espada\n" + "1: Mago con lanza\n" + "2: Bandido con hacha\n" + "3: Duende con cuchillo\n" + "4: Mago con hacha\n" + "5: Duende con hacha\n" + "6: Caballero con lanza\n" + "7: Bandido con cuchillo\n" + "8: Mago con espada\n" + "9: Caballero con hacha"));
 			switchClase(clase, i);
 		}
 		
@@ -39,34 +39,34 @@ public class CrearPersonajes {					// Todo esto es hecho por Rubi
 	
 	static void switchClase(int clase, int i) {
 		switch(clase) {
-		case 1:
+		case 0:
 			personajes.add(new Caballero("espada"));
 			break;
-		case 2:
+		case 1:
 			personajes.add(new Mago("lanza"));
 			break;
-		case 3:
+		case 2:
 			personajes.add(new Bandido("hacha"));
 			break;
-		case 4:
+		case 3:
 			personajes.add(new Duende("cuchillo"));
 			break;
-		case 5:
+		case 4:
 			personajes.add(new Mago("hacha"));
 			break;
-		case 6:
+		case 5:
 			personajes.add(new Duende("hacha"));
 			break;
-		case 7:
+		case 6:
 			personajes.add(new Caballero("lanza"));
 			break;
-		case 8:
+		case 7:
 			personajes.add(new Bandido("cuchillo"));
 			break;
-		case 9:
+		case 8:
 			personajes.add(new Mago("espada"));
 			break;
-		case 10:
+		case 9:
 			personajes.add(new Caballero("hacha"));
 			break;
 		}
