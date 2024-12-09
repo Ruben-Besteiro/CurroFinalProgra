@@ -24,12 +24,12 @@ public class CrearPersonajes {					// Todo esto es hecho por Rubi
 		
 		int clase;
 		
-		for (int i = 0; i < numHumanos; i++) {
+		for (int i = 0; i < numHumanos; i++) {		// Esto es para que los humanos escojan su clase
 			clase = Integer.parseInt(JOptionPane.showInputDialog(null, "Jugador " + (i+1) + ", elige personaje\n" + "1: Caballero con espada\n" + "2: Mago con lanza\n" + "3: Bandido con hacha\n" + "4: Duende con cuchillo\n" + "5: Mago con hacha\n" + "6: Duende con hacha\n" + "7: Caballero con lanza\n" + "8: Bandido con cuchillo\n" + "9: Mago con espada\n" + "10: Caballero con hacha"));
 			switchClase(clase, i);
 		}
 		
-		for (int i = numHumanos; i < (10-numHumanos); i++) {
+		for (int i = numHumanos; i < (10-numHumanos); i++) {		// Y esto es para que la máquina escoja su clase aleatoriamente
 			clase = (int) (Math.random() * 10) + 1;
 			switchClase(clase, i);
 		}
