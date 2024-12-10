@@ -121,6 +121,12 @@ public class MenuJuego {			// Todo esto es hecho por Jaime
 	                javax.swing.JOptionPane.INFORMATION_MESSAGE);
 	        }
 	    });
+		
+		Inicio.addActionListener(new ActionListener() {
+	        public void actionPerformed(ActionEvent e) {
+	        	cambiarPantalla();
+	        }
+		});
 	}
 	
 	public void mostrarBotones() {	//ESTE METODO ES PARA QUE CUANDO SE PULSE EL BOTON DE MODO DE JUEGO APAREZCAN ESTOS TRES BOTONES QUE SON LOS MODOS DE JUEGO QUE HAY 
@@ -135,15 +141,9 @@ public class MenuJuego {			// Todo esto es hecho por Jaime
 	    soloB.setBounds(centralX, centralY + centralHeight + 10, centralWidth, 50);
 	    soloB.setBackground(Color.GRAY);
 	    soloB.setForeground(Color.BLUE);
+	  
+	    //AQUI TENDRIA QUE IR LA PARTE DE RUBI DEL MENU Q ESTA ABAJO
 	    
-	    soloB.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				CrearPersonajes.CreacionDePersonajes();             // Aquí pasa a ejecutarse lo de Rubi
-			}
-	    });
-
 	    JButton duoB = new JButton("DUO");
 	    duoB.setBounds(centralX, centralY + centralHeight + 70, centralWidth, 50);
 	    duoB.setBackground(Color.GRAY);
@@ -163,4 +163,49 @@ public class MenuJuego {			// Todo esto es hecho por Jaime
 	    Panel.revalidate();
 	    Panel.repaint();
 	}
+	
+	//METODO PARA CAMBIAR DE PANTALLA
+	public void cambiarPantalla() {
+		Panel.removeAll();	//LIMPIAMOS LA PANTALLA
+		Panel.setBackground(Color.DARK_GRAY);	//COLOR DE FONDO EL MISMO	
+		
+		//LOS BOTONES
+		JButton boton1 = new JButton("ATACAR");
+		boton1.setBackground(Color.WHITE);
+		boton1.setForeground(Color.RED);
+		boton1.setFont(new Font("Arial", Font.BOLD, 22));	
+		boton1.setBounds(100, 100, 200, 50);
+
+		JButton boton2 = new JButton("HABILIDAD");
+		boton2.setBackground(Color.WHITE);
+		boton2.setForeground(Color.RED);
+		boton2.setFont(new Font("Arial", Font.BOLD, 22));	
+		boton2.setBounds(100, 200, 200, 50);
+
+		JButton boton3 = new JButton("DEFENDERSE");
+		boton3.setBackground(Color.WHITE);
+		boton3.setForeground(Color.RED);
+		boton3.setFont(new Font("Arial", Font.BOLD, 22));	
+		boton3.setBounds(100, 300, 200, 50);
+		
+		//AÁDO LOS BOTONES A LA NUEVA PANTALLA
+		Panel.add(boton1);
+		Panel.add(boton2);
+		Panel.add(boton3);
+		
+		
+		Panel.revalidate();	//REORGANIZA EL DISEÑO DEL PANEL EN ESTE CASO
+		Panel.repaint();	//ASEGURA QUE SE VEAN LOS CAMBIOS EN PANTALLA
+		
+	}
 }
+
+
+/*soloB.addActionListener(new ActionListener() {
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		CrearPersonajes.CreacionDePersonajes();             // Aquí pasa a ejecutarse lo de Rubi
+	}
+});
+*/
