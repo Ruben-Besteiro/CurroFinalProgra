@@ -1,4 +1,4 @@
-package CurroFinal;
+package MIPARTE;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 public class MenuJuego {			// Todo esto es hecho por Jaime
 
 	private JFrame ventana;	//PARA LA VENTANA
-	private JPanel Panel;	//PARA EL PANEL
+	public static JPanel Panel;	//PARA EL PANEL
 	private JButton ModoJuego; // BOTÓN PARA EL MODO DE JUEGO
 	
 	//CONSTRUCTOR
@@ -50,7 +50,7 @@ public class MenuJuego {			// Todo esto es hecho por Jaime
 	
 	//BOTONES DE INICIO Y TODO
 	public void botones() {
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // Obtengo el tamaño de la pantalla
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); //TAMAÑO DE LA PANTALLA
 		
 		JButton exitb = new JButton("EXIT");	//BOTON CON SU TEXTO EN EL
 		exitb.setBackground(Color.WHITE);	//cOLOR FONDO BOTON
@@ -58,16 +58,12 @@ public class MenuJuego {			// Todo esto es hecho por Jaime
 		exitb.setFont(new Font("Arial", Font.BOLD, 22));	
 		exitb.setBounds(50, 50, 150, 50); //POSICION DEL BOTON DE SALIR
 		
-		JButton Inicio = new JButton("INICIO");	//BOTON DE INICIO CON SU MENSAJE
-		Inicio.setBackground(Color.WHITE);
-		Inicio.setForeground(Color.RED);
-		Inicio.setFont(new Font("Arial", Font.BOLD, 22));	
+		// AÑADIR UN EVENTO DE ACCIÓN PARA EL BOTÓN
+	    exitb.addActionListener(e -> System.exit(0)); // CERRAR LA APLICACIÓN
 		
 		//CALCULO LA POSICION DEL BOTON PARA QUE SE COLOQUE A LA IZQUIERDA ABAJO
         int buttonX = screenSize.width - 150 - 120; //PARA CALCULAR LA POSI
         int buttonY = screenSize.height - 50 - 120; 
-
-        Inicio.setBounds(buttonX, buttonY, 150, 50); //POSICION BOTON
         
         //BOTON DE INSTRUCCIONES
         JButton instrucciones = new JButton("?");
@@ -96,7 +92,6 @@ public class MenuJuego {			// Todo esto es hecho por Jaime
         ModoJuego.setBounds(buttonXX, buttonYY, buttonWidth, buttonHeight);
 		
 		Panel.add(exitb);
-		Panel.add(Inicio);
 		Panel.add(ModoJuego);
 		Panel.add(instrucciones);
 	
@@ -122,11 +117,7 @@ public class MenuJuego {			// Todo esto es hecho por Jaime
 	        }
 	    });
 		
-		Inicio.addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
-	        	cambiarPantalla();
-	        }
-		});
+		
 	}
 	
 	public void mostrarBotones() {	//ESTE METODO ES PARA QUE CUANDO SE PULSE EL BOTON DE MODO DE JUEGO APAREZCAN ESTOS TRES BOTONES QUE SON LOS MODOS DE JUEGO QUE HAY 
@@ -158,6 +149,25 @@ public class MenuJuego {			// Todo esto es hecho por Jaime
 	    Panel.add(soloB);
 	    Panel.add(duoB);
 	    Panel.add(squadB);
+	    
+	    //LES DOY FUNCION DE CAMBIAR LA PANTALLA
+		soloB.addActionListener(new ActionListener() {
+	        public void actionPerformed(ActionEvent e) {
+	        	cambiarPantalla();
+	        }
+		});
+		
+		duoB.addActionListener(new ActionListener() {
+	        public void actionPerformed(ActionEvent e) {
+	        	cambiarPantalla();
+	        }
+		});
+		
+		squadB.addActionListener(new ActionListener() {
+	        public void actionPerformed(ActionEvent e) {
+	        	cambiarPantalla();
+	        }
+		});
 
 	    //ACTUALIZO EL PANEL PARA QUE SE MUESTREN LOS BOTONES DE SOLO, DUO Y SQUAD
 	    Panel.revalidate();
@@ -165,39 +175,12 @@ public class MenuJuego {			// Todo esto es hecho por Jaime
 	}
 	
 	//METODO PARA CAMBIAR DE PANTALLA
-	public void cambiarPantalla() {
-		Panel.removeAll();	//LIMPIAMOS LA PANTALLA
-		Panel.setBackground(Color.DARK_GRAY);	//COLOR DE FONDO EL MISMO	
-		
-		//LOS BOTONES
-		JButton boton1 = new JButton("ATACAR");
-		boton1.setBackground(Color.WHITE);
-		boton1.setForeground(Color.RED);
-		boton1.setFont(new Font("Arial", Font.BOLD, 22));	
-		boton1.setBounds(100, 100, 200, 50);
-
-		JButton boton2 = new JButton("HABILIDAD");
-		boton2.setBackground(Color.WHITE);
-		boton2.setForeground(Color.RED);
-		boton2.setFont(new Font("Arial", Font.BOLD, 22));	
-		boton2.setBounds(100, 200, 200, 50);
-
-		JButton boton3 = new JButton("DEFENDERSE");
-		boton3.setBackground(Color.WHITE);
-		boton3.setForeground(Color.RED);
-		boton3.setFont(new Font("Arial", Font.BOLD, 22));	
-		boton3.setBounds(100, 300, 200, 50);
-		
-		//AÁDO LOS BOTONES A LA NUEVA PANTALLA
-		Panel.add(boton1);
-		Panel.add(boton2);
-		Panel.add(boton3);
-		
-		
-		Panel.revalidate();	//REORGANIZA EL DISEÑO DEL PANEL EN ESTE CASO
-		Panel.repaint();	//ASEGURA QUE SE VEAN LOS CAMBIOS EN PANTALLA
-		
-	}
+		public void cambiarPantalla() {
+			Panel.removeAll();	
+			new ModoSolo();//LIMPIAMOS LA PANTALLA
+			
+		}
+	
 }
 
 
