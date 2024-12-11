@@ -1,4 +1,4 @@
-package MIPARTE;
+package CurroFinal;
 
 import java.awt.Color;
 import java.awt.Font;
