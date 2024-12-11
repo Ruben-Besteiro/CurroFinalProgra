@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class MenuJuego {			// Todo esto es hecho por Jaime
@@ -153,18 +154,24 @@ public class MenuJuego {			// Todo esto es hecho por Jaime
 	    //LES DOY FUNCION DE CAMBIAR LA PANTALLA
 		soloB.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
+	        	JOptionPane.showMessageDialog(null, "Has elegido el modo solo, por lo que habrá 1 jugador humano y 15 bots");
+	        	CrearPersonajes.CreacionDePersonajes(1);
 	        	cambiarPantalla();
 	        }
 		});
 		
 		duoB.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
+	        	JOptionPane.showMessageDialog(null, "Has elegido el modo dúo, por lo que habrá 2 jugadores humanos y 14 bots");
+	        	CrearPersonajes.CreacionDePersonajes(2);
 	        	cambiarPantalla();
 	        }
 		});
 		
 		squadB.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
+	        	JOptionPane.showMessageDialog(null, "Has elegido el modo squad, por lo que habrá 4 jugadores humanos y 12 bots");
+	        	CrearPersonajes.CreacionDePersonajes(2);
 	        	cambiarPantalla();
 	        }
 		});

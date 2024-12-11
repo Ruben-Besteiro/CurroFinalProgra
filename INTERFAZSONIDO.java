@@ -1,4 +1,4 @@
-package MIPARTE;
+package CurroFinal;
 
 public interface INTERFAZSONIDO {
 

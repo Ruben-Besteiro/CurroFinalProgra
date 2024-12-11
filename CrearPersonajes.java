@@ -4,73 +4,79 @@ import javax.swing.JOptionPane;
 
 
 public class CrearPersonajes {					// Todo esto es hecho por Rubi
-	public static ArrayList<Personaje> personajes;
+	public static ArrayList<Personaje> personajes = new ArrayList<>();
 	
-	public static void CreacionDePersonajes() {
-		int numHumanos = 0;
-		personajes = new ArrayList<Personaje>();
-		try {
-			numHumanos = Integer.parseInt(JOptionPane.showInputDialog(null, "Selecciona cuántos jugadores humanos quieres que haya"));
-		} catch (Exception IllegalArgumentException) {
-			JOptionPane.showMessageDialog(null, "Hay que poner un número");
-			System.exit(1);
-		}
-		
-		if (numHumanos > 10) {
-			numHumanos = 10;
-		}
-		JOptionPane.showMessageDialog(null, "Has elegido " + numHumanos + " jugadores humanos\nHabrá " + (10-numHumanos) + " bots");
-		// De momento mejor hacer 10 jugadores por simplicidad
-		
+	public static void CreacionDePersonajes(int numHumanos) {	
 		int clase;
 		
 		for (int i = 0; i < numHumanos; i++) {		// Esto es para que los humanos escojan su clase
-			clase = Integer.parseInt(JOptionPane.showInputDialog(null, "Jugador " + i + ", elige personaje\n" + "0: Caballero con espada\n" + "1: Mago con lanza\n" + "2: Bandido con hacha\n" + "3: Duende con cuchillo\n" + "4: Mago con hacha\n" + "5: Duende con hacha\n" + "6: Caballero con lanza\n" + "7: Bandido con cuchillo\n" + "8: Mago con espada\n" + "9: Caballero con hacha"));
+			clase = Integer.parseInt(JOptionPane.showInputDialog(null, "Jugador " + i + ", elige personaje\n" + "0-3: Caballero\n" + "4-7: Mago\n" + "8-11: Bandido\n" + "12-15: Duende\n" + "El número que escojas dentro de cada intervalo determinará\ntu herramienta (espada, hacha, lanza o cuchillo)"));
 			switchClase(clase, i);
 		}
 		
-		for (int i = numHumanos; i < (10-numHumanos); i++) {		// Y esto es para que la máquina escoja su clase aleatoriamente
-			clase = (int) (Math.random() * 10) + 1;
+		for (int i = numHumanos; i < 16; i++) {		// Y esto es para que la máquina escoja su clase aleatoriamente
+			clase = (int) (Math.random() * 16);
 			switchClase(clase, i);
 		}
-		
-		BattleRoyale.Batalla();			// Una vez que se crean los personajes, da comienzo la batalla
 	}
 	
 	static void switchClase(int clase, int i) {
-		switch(clase) {
-		case 0:
+		try {
+			switch(clase) {
+			case 0:
+				personajes.add(new Caballero("espada"));
+				break;
+			case 1:
+				personajes.add(new Caballero("hacha"));
+				break;
+			case 2:
+				personajes.add(new Caballero("lanza"));
+				break;
+			case 3:
+				personajes.add(new Caballero("cuchillo"));
+				break;
+			case 4:
+				personajes.add(new Mago("espada"));
+				break;
+			case 5:
+				personajes.add(new Mago("hacha"));
+				break;
+			case 6:
+				personajes.add(new Mago("lanza"));
+				break;
+			case 7:
+				personajes.add(new Mago("cuchillo"));
+				break;
+			case 8:
+				personajes.add(new Bandido("espada"));
+				break;
+			case 9:
+				personajes.add(new Bandido("hacha"));
+				break;
+			case 10:
+				personajes.add(new Bandido("lanza"));
+				break;
+			case 11:
+				personajes.add(new Bandido("cuchillo"));
+				break;
+			case 12:
+				personajes.add(new Duende("espada"));
+				break;
+			case 13:
+				personajes.add(new Duende("hacha"));
+				break;
+			case 14:
+				personajes.add(new Duende("lanza"));
+				break;
+			case 15:
+				personajes.add(new Duende("cuchillo"));
+				break;
+			default:
+				personajes.add(new Caballero("Espada"));
+			}
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "Lo que has introducido no es válido, por lo que se te ha asignado un caballero con una espada");
 			personajes.add(new Caballero("espada"));
-			break;
-		case 1:
-			personajes.add(new Mago("lanza"));
-			break;
-		case 2:
-			personajes.add(new Bandido("hacha"));
-			break;
-		case 3:
-			personajes.add(new Duende("cuchillo"));
-			break;
-		case 4:
-			personajes.add(new Mago("hacha"));
-			break;
-		case 5:
-			personajes.add(new Duende("hacha"));
-			break;
-		case 6:
-			personajes.add(new Caballero("lanza"));
-			break;
-		case 7:
-			personajes.add(new Bandido("cuchillo"));
-			break;
-		case 8:
-			personajes.add(new Mago("espada"));
-			break;
-		case 9:
-			personajes.add(new Caballero("hacha"));
-			break;
-		default:
-			personajes.add(new Caballero("espada"));		// Si por la razón que sea hay un error, seleccionará esta opción
 		}
 		JOptionPane.showMessageDialog(null, personajes.get(i).ToString(i));
 	}

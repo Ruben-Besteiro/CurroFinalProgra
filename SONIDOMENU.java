@@ -1,4 +1,4 @@
-package MIPARTE;
+package CurroFinal;
 
 import javax.sound.sampled.*;
 import java.io.File;
