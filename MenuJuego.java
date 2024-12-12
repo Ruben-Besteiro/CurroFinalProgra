@@ -164,7 +164,7 @@ public class MenuJuego {			// Todo esto es hecho por Jaime
 	        public void actionPerformed(ActionEvent e) {
 	        	JOptionPane.showMessageDialog(null, "Has elegido el modo dúo, por lo que habrá 2 jugadores humanos y 14 bots");
 	        	CrearPersonajes.CreacionDePersonajes(2);
-	        	cambiarPantalla();
+	        	new DUO();
 	        }
 		});
 		
