@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class BattleRoyale {
-	public static ArrayList<Personaje> personajes;
+	public static ArrayList<Personaje> personajes = new ArrayList<>();
 	
 	public static void Batalla() {
 		personajes = CrearPersonajes.personajes;

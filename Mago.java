@@ -24,7 +24,7 @@ public class Mago extends Personaje {
 		}
 	}
 	
-	void habilidad() {
+	public void habilidad() {
 		int numJugador = Integer.parseInt(JOptionPane.showInputDialog(null, "Elige a qué jugador lanzarle una bola de fuego"));
 		try {
 			CrearPersonajes.personajes.get(numJugador).setVida(CrearPersonajes.personajes.get(numJugador).getVida()-50);

@@ -26,57 +26,57 @@ public class Personaje {
 		}
 	}
 	
-	void habilidad() {
+	public void habilidad() {
 		// Esto está vacío porque cada clase tiene su propia habilidad
 	}
 	
 	// GETTERS Y SETTERS
 	
-	String getClase() {
+	public String getClase() {
 		return this.clase;
 	}
 	
-	void setClase(String clase) {
+	public void setClase(String clase) {
 		this.clase = clase;
 	}
 	
-	String getHerramienta() {
+	public String getHerramienta() {
 		return this.herramienta;
 	}
 	
-	void setHerramienta(String herramienta) {
+	public void setHerramienta(String herramienta) {
 		this.herramienta = herramienta;
 	}
 	
-	int getVida() {
+	public int getVida() {
 		return this.vida;
 	}
 	
-	void setVida(int vida) {
+	public void setVida(int vida) {
 		this.vida = vida;
 	}
 	
-	int getDaño() {
+	public int getDaño() {
 		return daño;
 	}
 	
-	void setDaño(int daño) {
+	public void setDaño(int daño) {
 		this.daño = daño;
 	}
 	
-	boolean getHabilidadActivada() {
+	public boolean getHabilidadActivada() {
 		return this.habilidadActivada;
 	}
 	
-	void setHabilidadActivada(boolean habilidadActivada) {
+	public void setHabilidadActivada(boolean habilidadActivada) {
 		this.habilidadActivada = habilidadActivada;
 	}
 	
-	boolean getBolaDeFuego() {
+	public boolean getBolaDeFuego() {
 		return this.bolaDeFuego;
 	}
 	
-	void setBolaDeFuego(boolean bolaDeFuego) {
+	public void setBolaDeFuego(boolean bolaDeFuego) {
 		this.bolaDeFuego = bolaDeFuego;
 	}
 	

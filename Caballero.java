@@ -23,7 +23,7 @@ public class Caballero extends Personaje {
 		}
 	}
 	
-	void ataque(int numJugador) {		// El ataque básico del caballero es distinto según si el ataque es o no cargado
+	public void ataque(int numJugador) {		// El ataque básico del caballero es distinto según si el ataque es o no cargado
 		if (!this.getBolaDeFuego()) {
 			try {
 				if (this.getHabilidadActivada()) {			// Esto se ejecuta si el ataque está cargado (hace daño doble)
@@ -43,7 +43,7 @@ public class Caballero extends Personaje {
 		}
 	}
 	
-	void habilidad() {
+	public void habilidad() {
 		JOptionPane.showMessageDialog(null, "El caballero ha cargado su ataque y hará el doble de daño en el siguiente turno");
 		this.setHabilidadActivada(true);
 		this.setBolaDeFuego(false);
