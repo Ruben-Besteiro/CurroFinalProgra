@@ -171,7 +171,7 @@ public class MenuJuego {			// Todo esto es hecho por Jaime
 		squadB.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
 	        	JOptionPane.showMessageDialog(null, "Has elegido el modo squad, por lo que habrá 4 jugadores humanos y 12 bots");
-	        	CrearPersonajes.CreacionDePersonajes(2);
+	        	CrearPersonajes.CreacionDePersonajes(4);
 	        	cambiarPantalla();
 	        }
 		});
