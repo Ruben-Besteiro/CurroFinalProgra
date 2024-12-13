@@ -25,6 +25,9 @@ public class Duende extends Personaje {
 	
 	public void habilidad() {
 		JOptionPane.showMessageDialog(null, "El duende ha activado su escudo y será inmune al daño el próximo turno");
+		if (!this.getHabilidadActivada()) {
+			this.setHabilidadActivada(true);
+		}
 		this.setHabilidadActivada(false);
 		this.setBolaDeFuego(false);
 	}

@@ -30,7 +30,7 @@ public class ModoSolo {
         boton1.addActionListener(new ActionListener() { // CUANDO SE PULSE EL BOTON DE SOLO QUE SE VAYA A LA CLASE PERSONAJE Y ATACA
             public void actionPerformed(ActionEvent e) {
                 Personaje pers = new Personaje();
-                pers.ataque(0);
+                pers.ataque();
             }
         });
 

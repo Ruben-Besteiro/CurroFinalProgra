@@ -11,7 +11,9 @@ public class Personaje {
 	private int vida;
 	private int daño;
 	
-	void ataque(int numJugador) {
+	void ataque() {
+		int numJugador = Integer.parseInt(JOptionPane.showInputDialog(null, "Elige a quién atacar"));
+		
 		if (!this.bolaDeFuego) {
 			try {			// Esto se ejecuta cuando el jugador ataca
 				CrearPersonajes.personajes.get(numJugador).setVida(CrearPersonajes.personajes.get(numJugador).getVida() - this.getDaño());
@@ -84,5 +86,14 @@ public class Personaje {
 	
 	public String ToString(int posicion) {
 		return ("El jugador " + posicion + " es un " + this.clase + " (" + this.vida + " de vida) cuya herramienta es " + this.herramienta + " (" + this.daño + " de daño)");
+	}
+	
+	public void Equals(int posicion) {
+		for (int i = 0; i < (posicion-1); i++) {
+			if (this.getClase() == CrearPersonajes.personajes.get(i).getClase() && this.getHerramienta() == CrearPersonajes.personajes.get(i).getHerramienta()) {
+				JOptionPane.showMessageDialog(null, "El personaje que se acaba de crear es igual al que hay en la posición " + i);
+				return;
+			}
+		}
 	}
 }

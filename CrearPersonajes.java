@@ -79,5 +79,6 @@ public class CrearPersonajes {					// Todo esto es hecho por Rubi
 			personajes.add(new Caballero("espada"));
 		}
 		JOptionPane.showMessageDialog(null, personajes.get(i).ToString(i));
+		personajes.get(i).Equals(i);
 	}
 }
