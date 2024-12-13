@@ -24,7 +24,7 @@ public class Caballero extends Personaje {
 	}
 	
 	public void ataque(int numJugador) {		// El ataque básico del caballero es distinto según si el ataque es o no cargado
-		if (!this.getBolaDeFuego()) {
+		if (!this.getBolaDeFuego() && !(CrearPersonajes.personajes.get(numJugador).getClase() == "duende" && CrearPersonajes.personajes.get(numJugador).getHabilidadActivada())) {
 			try {
 				if (this.getHabilidadActivada()) {			// Esto se ejecuta si el ataque está cargado (hace daño doble)
 					CrearPersonajes.personajes.get(numJugador).setVida(CrearPersonajes.personajes.get(numJugador).getVida() - CrearPersonajes.personajes.get(numJugador).getDaño() * 2);
@@ -37,9 +37,11 @@ public class Caballero extends Personaje {
 			} catch (NullPointerException e) {
 				JOptionPane.showMessageDialog(null, "Has intentado atacarle a un cadáver, por lo que se te saltará el turno");
 			}
-		} else {			// Si el jugador está quemado, el ataque no surte efecto y recibes daño
+		} else if (this.getBolaDeFuego()) {			// Si el jugador está quemado, el ataque no surte efecto y recibes daño
 			this.setVida(this.getVida()-30);
 			JOptionPane.showMessageDialog(null, "Has intentado atacar estando quemado, por lo que recibes 30 de daño. Te queda " + this.getVida() + " de vida");
+		} else if (CrearPersonajes.personajes.get(numJugador).getClase() == "duende" && CrearPersonajes.personajes.get(numJugador).getHabilidadActivada()) {
+			JOptionPane.showMessageDialog(null, "Has elegido atacarle a un duende usando su escudo, por lo que tu ataque ha sido en vano");
 		}
 	}
 	
