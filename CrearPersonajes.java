@@ -5,8 +5,10 @@ import javax.swing.JOptionPane;
 
 public class CrearPersonajes {					// Todo esto es hecho por Rubi
 	public static ArrayList<Personaje> personajes = new ArrayList<>();
+	public static int numHumanos;
 	
-	public static void CreacionDePersonajes(int numHumanos) {	
+	public static void CreacionDePersonajes(int a) {
+		numHumanos = a;		// Esto se usa para que la habilidad del mago detecte si la está usando el jugador o un bot
 		int clase;
 		
 		for (int i = 0; i < numHumanos; i++) {		// Esto es para que los humanos escojan su clase

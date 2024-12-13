@@ -1,5 +1,7 @@
 package CurroFinal;
 
+import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
 
 public class Mago extends Personaje {
@@ -25,7 +27,19 @@ public class Mago extends Personaje {
 	}
 	
 	public void habilidad() {
-		int numJugador = Integer.parseInt(JOptionPane.showInputDialog(null, "Elige a qué jugador lanzarle una bola de fuego"));
+		int numHumanos = CrearPersonajes.numHumanos;
+		System.out.println(numHumanos);
+		int numJugador = 0;
+		
+		if (CrearPersonajes.personajes.indexOf(this) <= numHumanos) {		// Esto es si la habilidad del mago la castea un jugador
+			numJugador = Integer.parseInt(JOptionPane.showInputDialog(null, "Elige a qué jugador lanzarle una bola de fuego"));
+		} else {		// Y esto es si la castea un bot
+			do {
+				numJugador = (int) (Math.random() * 16);		// Escogen un jugador al azar siempre que no esté muerto
+			}
+			while (CrearPersonajes.personajes.get(numJugador).getVida() <= 0 || CrearPersonajes.personajes.get(numJugador) == null);
+		}
+		
 		try {
 			CrearPersonajes.personajes.get(numJugador).setVida(CrearPersonajes.personajes.get(numJugador).getVida()-50);
 			JOptionPane.showMessageDialog(null, "El mago le ha lanzado una bola de fuego al jugador " + numJugador + " y le ha hecho 50 de daño. Le queda " + CrearPersonajes.personajes.get(numJugador).getVida());
