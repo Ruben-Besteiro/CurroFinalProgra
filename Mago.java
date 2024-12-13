@@ -1,7 +1,4 @@
 package CurroFinal;
-
-import java.util.ArrayList;
-
 import javax.swing.JOptionPane;
 
 public class Mago extends Personaje {
@@ -31,7 +28,7 @@ public class Mago extends Personaje {
 		System.out.println(numHumanos);
 		int numJugador = 0;
 		
-		if (CrearPersonajes.personajes.indexOf(this) <= numHumanos) {		// Esto es si la habilidad del mago la castea un jugador
+		if (CrearPersonajes.personajes.indexOf(this) < numHumanos) {		// Esto es si la habilidad del mago la castea un jugador
 			numJugador = Integer.parseInt(JOptionPane.showInputDialog(null, "Elige a qué jugador lanzarle una bola de fuego"));
 		} else {		// Y esto es si la castea un bot
 			do {

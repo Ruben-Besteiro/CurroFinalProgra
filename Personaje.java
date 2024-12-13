@@ -11,8 +11,8 @@ public class Personaje {
 	private int vida;
 	private int daño;
 	
-	void ataque() {
-		int numJugador = Integer.parseInt(JOptionPane.showInputDialog(null, "Elige a quién atacar"));
+	void ataque(int numJugador) {
+		//int numJugador = Integer.parseInt(JOptionPane.showInputDialog(null, "Elige a quién atacar"));
 		
 		if (!this.bolaDeFuego && !(CrearPersonajes.personajes.get(numJugador).getClase() == "duende" && CrearPersonajes.personajes.get(numJugador).getHabilidadActivada())) {
 			try {			// Esto se ejecuta cuando el jugador ataca
