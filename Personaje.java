@@ -34,6 +34,7 @@ public class Personaje {
 		// Esto está vacío porque cada clase tiene su propia habilidad
 	}
 	
+	
 	// GETTERS Y SETTERS
 	
 	public String getClase() {

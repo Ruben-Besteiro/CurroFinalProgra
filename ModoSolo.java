@@ -110,7 +110,6 @@ public class ModoSolo {
                 opciones.add("Atacar a " + i);
             }
         }
-        eliminarJugador();
         return opciones.toArray(new String[0]);
     }
 }
