@@ -25,8 +25,10 @@ public class Bandido extends Personaje {
 	
 	public void habilidad() {
 		for (int i = 0; i < CrearPersonajes.personajes.size(); i++) {
-			CrearPersonajes.personajes.get(i).setVida(CrearPersonajes.personajes.get(i).getVida()-2);		// Hace 2 de daño a todo el lobby
-			JOptionPane.showMessageDialog(null, "El " + this.getClase() + " ha atacado al jugador " + i + " con un daño de " + this.getDaño() + ". Le queda " + CrearPersonajes.personajes.get(i).getVida() + " de vida");
+			if (i != CrearPersonajes.personajes.indexOf(this)) {
+				CrearPersonajes.personajes.get(i).setVida(CrearPersonajes.personajes.get(i).getVida()-2);		// Hace 2 de daño a todo el lobby excepto a uno mismo (también a tu dúo / squad)
+				JOptionPane.showMessageDialog(null, "El " + this.getClase() + " ha atacado al jugador " + i + " con un daño de " + this.getDaño() + ". Le queda " + CrearPersonajes.personajes.get(i).getVida() + " de vida");
+			}
 		}
 		this.setBolaDeFuego(false);
 	}

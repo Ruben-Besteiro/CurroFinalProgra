@@ -95,7 +95,7 @@ public class ModoSolo {
         }
     }
     
-    //METODO PARA ELIMINAR JUGADOR
+    //METODO PARA CHEQUEAR QUÉ JUGADORES ESTÁN MUERTOS Y ELIMINARLOS
     public void eliminarJugador() {
     	CrearPersonajes.personajes.removeIf(personaje -> personaje.getVida() <= 0);
         System.out.println("Se han eliminado los jugadores con vida menor o igual a 0.");
