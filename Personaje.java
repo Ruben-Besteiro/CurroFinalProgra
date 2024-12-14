@@ -30,6 +30,23 @@ public class Personaje {
 		}
 	}
 	
+	void ataquePeroSinJOptionPanes(int numJugador) {		// Metido a petición de Manu
+		//int numJugador = Integer.parseInt(JOptionPane.showInputDialog(null, "Elige a quién atacar"));
+		
+		if (!this.bolaDeFuego && !(CrearPersonajes.personajes.get(numJugador).getClase() == "duende" && CrearPersonajes.personajes.get(numJugador).getHabilidadActivada())) {
+			try {			// Esto se ejecuta cuando el jugador ataca
+				CrearPersonajes.personajes.get(numJugador).setVida(CrearPersonajes.personajes.get(numJugador).getVida() - this.getDaño());
+			} catch (NullPointerException e) {
+				// Nada
+			}
+		} else if (this.bolaDeFuego) {			// Si el jugador está quemado, el ataque no surte efecto y recibes daño
+			this.setVida(this.getVida()-30);
+			this.setBolaDeFuego(false);
+		} else if (CrearPersonajes.personajes.get(numJugador).getClase() == "duende" && CrearPersonajes.personajes.get(numJugador).getHabilidadActivada()) {
+			// Nada
+		}
+	}
+	
 	public void habilidad() {
 		// Esto está vacío porque cada clase tiene su propia habilidad
 	}
