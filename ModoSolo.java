@@ -40,6 +40,8 @@ public class ModoSolo {
         pantallaTextos.setFont(new Font("Arial", Font.PLAIN, 16));
         pantallaTextos.setLineWrap(true);
         pantallaTextos.setWrapStyleWord(true);
+	    pantallaTextos.setBackground(Color.BLACK); //FONDO NEGRO
+        pantallaTextos.setForeground(Color.WHITE); //TEXTO BLANC
 
         JScrollPane scroll = new JScrollPane(pantallaTextos);
         //CALCULOS NECESARIOS PARA PONERLO EN EL CENTRO DE LA PANTALLA
