@@ -16,7 +16,7 @@ public class SONIDOVICTORIA implements INTERFAZSONIDO {
 	 @Override
 	    public void sonido() {
 	        try {
-	            File sonido = new File("win.wav"); //RUTA PARA EL AUDIO
+	            File sonido = new File("CurroFinalProgra/win.wav"); //RUTA PARA EL AUDIO
 	            AudioInputStream audio = AudioSystem.getAudioInputStream(sonido);
 	            clip = AudioSystem.getClip();
 	            clip.open(audio);
@@ -29,7 +29,7 @@ public class SONIDOVICTORIA implements INTERFAZSONIDO {
 	    @Override
 	    public void sonidoBucle() {
 	        try {
-	            File sonidoBucle = new File("win.wav"); //RUTA CON EL AUDIO
+	            File sonidoBucle = new File("CurroFinalProgra/win.wav"); //RUTA CON EL AUDIO
 	            AudioInputStream audioBucle = AudioSystem.getAudioInputStream(sonidoBucle);
 	            clip = AudioSystem.getClip();
 	            clip.open(audioBucle);
