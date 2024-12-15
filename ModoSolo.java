@@ -63,7 +63,7 @@ public class ModoSolo {
                 if (opciones.length > 0) {
                     int eleccion = JOptionPane.showOptionDialog(
                         null, 
-                        "A quién deseas atacar?", 
+                        "A quien deseas atacar?", 
                         "Seleccionar tu objetivo", 
                         JOptionPane.DEFAULT_OPTION, 
                         JOptionPane.QUESTION_MESSAGE, 
@@ -146,7 +146,7 @@ public class ModoSolo {
                 try {
                 	agregarTextoPantalla("Personaje " + i + ": " + CrearPersonajes.personajes.get(i).ToString(i));	//PANTAKLLA TEXTOS
                 } catch (Exception e) {
-                    System.err.println("Error al intentar obtener la información del personaje " + i + ": " + e.getMessage());	//LO HE AÑADIDO POR QUE ME DABA ERRORES
+                    System.err.println("Error al intentar obtener la informacion del personaje " + i + ": " + e.getMessage());	//LO HE AÑADIDO POR QUE ME DABA ERRORES
                 }
             } else {	//SI ES NULL ES POR QUE ESTA MUERTO
                 System.out.println("Personaje " + i + ": ELIMINADO");
@@ -233,7 +233,7 @@ public class ModoSolo {
         //CUANDO SOLO QUEDA UNO
         if (vivos == 1) {
             if (indiceGanador == 0) { //SI GANO YO 
-                agregarTextoPantalla("¡FELICIDADES! ¡ERES EL GANADOR!");	//MENSAJE DE LA PANTALLA DE TEXTOS
+                agregarTextoPantalla("FELICIDADES!!! ¡ERES EL GANADOR!");	//MENSAJE DE LA PANTALLA DE TEXTOS
                 borrarBotonesPorMuerte(); //DESACTIVO BOTONES
                 victoria = new SONIDOVICTORIA(); //INICIALIZO EL SONIDO
                 victoria.sonido(); //sUENA EL SONIDO UNA SOLA VEZ
