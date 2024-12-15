@@ -47,6 +47,8 @@ public class ModoSolo {
         int pantallaAlto = 200; 
         scroll.setBounds((panelAncho - pantallaAncho) / 2, (panelAlto - pantallaAlto) / 3, pantallaAncho, pantallaAlto); //CENTRADO
 
+	 scroll.setBorder(javax.swing.BorderFactory.createLineBorder(Color.RED, 3)); //BORDE ROJO DE 3 PX
+
         //BOTON ATACAR A LA IZQUIERDA
         JButton boton1 = new JButton("ATACAR");
         boton1.setBackground(Color.WHITE);
