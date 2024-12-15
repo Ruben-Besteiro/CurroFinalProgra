@@ -69,7 +69,7 @@ public class ModoSolo {
                         int indiceObjetivo = eleccion;
                         try {
                             if (indiceObjetivo < CrearPersonajes.personajes.size() && CrearPersonajes.personajes.get(indiceObjetivo) != null) {
-                                CrearPersonajes.personajes.get(0).ataque(indiceObjetivo);
+                                CrearPersonajes.personajes.get(0).ataque(indiceObjetivo, 0);
                                 eliminarJugador();
                                 eleccionBots();
                             } /*else {
@@ -94,7 +94,7 @@ public class ModoSolo {
         boton2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
-                    CrearPersonajes.personajes.get(0).habilidad();	//LLAMO A LA FUCNION DE HABILIDAD DE RUBI
+                    CrearPersonajes.personajes.get(0).habilidad(0);	//LLAMO A LA FUCNION DE HABILIDAD DE RUBI
                     eliminarJugador();
                     eleccionBots();
                 } catch (Exception ex) {
@@ -171,13 +171,13 @@ public class ModoSolo {
                         if (!objetivos.isEmpty()) {
                             int indiceObjetivo = objetivos.get(random.nextInt(objetivos.size()));
                             agregarTextoPantalla("BOT " + i + " HA ELEGIDO ATACAR A JUGADOR " + indiceObjetivo);
-                            CrearPersonajes.personajes.get(i).ataque(indiceObjetivo); //ATACA
+                            CrearPersonajes.personajes.get(i).ataque(indiceObjetivo, i); //ATACA
                         } else {
                             agregarTextoPantalla("BOT " + i + " NO TIENE OBJETIVOS DISPONIBLES.");
                         }
                     } else { //EL BOT DECIDE USAR HABILIDAD
                         agregarTextoPantalla("BOT " + i + " HA USADO SU HABILIDAD.");
-                        CrearPersonajes.personajes.get(i).habilidad(); //USA HABILIDAD
+                        CrearPersonajes.personajes.get(i).habilidad(i); //USA HABILIDAD
                     }
                 }
             } catch (Exception ex) {
