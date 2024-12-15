@@ -28,9 +28,9 @@ public class ModoSolo {
     //METODOS
     public void cambiarPantalla() {
         MenuJuego.Panel.setLayout(null); // USAMOS LAYOUT MANUAL
-        MenuJuego.Panel.setBackground(Color.BLUE); // COLOR DE FONDO
+        MenuJuego.Panel.setBackground(Color.BLUE); //COLOR DE FONDO
 
-        // DIMENSIONES DEL PANEL
+        //DIMENSIONES DEL PANEL
         int panelAncho = MenuJuego.Panel.getWidth();
         int panelAlto = MenuJuego.Panel.getHeight();
 
@@ -45,22 +45,22 @@ public class ModoSolo {
         //CALCULOS NECESARIOS PARA PONERLO EN EL CENTRO DE LA PANTALLA
         int pantallaAncho = 400; 
         int pantallaAlto = 200; 
-        scroll.setBounds((panelAncho - pantallaAncho) / 2, (panelAlto - pantallaAlto) / 3, pantallaAncho, pantallaAlto); // CENTRADO
+        scroll.setBounds((panelAncho - pantallaAncho) / 2, (panelAlto - pantallaAlto) / 3, pantallaAncho, pantallaAlto); //CENTRADO
 
-        // BOTÓN ATACAR A LA IZQUIERDA
+        //BOTON ATACAR A LA IZQUIERDA
         JButton boton1 = new JButton("ATACAR");
         boton1.setBackground(Color.WHITE);
         boton1.setForeground(Color.RED);
         boton1.setFont(new Font("Arial", Font.BOLD, 22));
-        boton1.setBounds(50, scroll.getY() + scroll.getHeight() + 20, 200, 50); // DEBAJO Y A LA IZQUIERDA
+        boton1.setBounds(50, scroll.getY() + scroll.getHeight() + 20, 200, 50); //DEBAJO Y A LA IZQUIERDA
         boton1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String[] opciones = generarOpcionesAtaque();
                 if (opciones.length > 0) {
                     int eleccion = JOptionPane.showOptionDialog(
                         null, 
-                        "¿A quién deseas atacar?", 
-                        "Seleccionar objetivo", 
+                        "A quién deseas atacar?", 
+                        "Seleccionar tu objetivo", 
                         JOptionPane.DEFAULT_OPTION, 
                         JOptionPane.QUESTION_MESSAGE, 
                         null, 
@@ -106,12 +106,12 @@ public class ModoSolo {
         });
         
 
-        // BOTÓN IMPRIMIR PERSONAJES DEBAJO DE LA PANTALLA DE TEXTO
+        //BOTON IMPRIMIR PERSONAJES DEBAJO DE LA PANTALLA DE TEXTO
         JButton botonImprimir = new JButton("IMPRIMIR PERSONAJES");
         botonImprimir.setBackground(Color.WHITE);
         botonImprimir.setForeground(Color.RED);
         botonImprimir.setFont(new Font("Arial", Font.BOLD, 22));
-        botonImprimir.setBounds((panelAncho - 300) / 2, boton1.getY() + boton1.getHeight() + 20, 300, 50); // CENTRADO BAJO LOS OTROS BOTONES
+        botonImprimir.setBounds((panelAncho - 300) / 2, boton1.getY() + boton1.getHeight() + 20, 300, 50); //CENTRADO BAJO LOS OTROS BOTONES
         botonImprimir.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 imprimirPersonajes();
@@ -173,7 +173,7 @@ public class ModoSolo {
                         if (!objetivos.isEmpty()) {
                             int indiceObjetivo = objetivos.get(random.nextInt(objetivos.size()));
                             agregarTextoPantalla("BOT " + i + " HA ELEGIDO ATACAR A JUGADOR " + indiceObjetivo);
-                            CrearPersonajes.personajes.get(i).ataque(indiceObjetivo); // ATACA
+                            CrearPersonajes.personajes.get(i).ataque(indiceObjetivo); //ATACA
                         } else {
                             agregarTextoPantalla("BOT " + i + " NO TIENE OBJETIVOS DISPONIBLES.");
                         }
@@ -216,7 +216,7 @@ public class ModoSolo {
     
     //METODO PARA VICTORIA
     public void ganador() {
-        int indiceGanador = -1;	//
+        int indiceGanador = -1;	
         int vivos=0;
         
         //RECORRO 
@@ -236,7 +236,7 @@ public class ModoSolo {
             } else {
                 agregarTextoPantalla("El bot " + indiceGanador + " ha ganado la partida.");	//GANA UN BOT
                 borrarBotonesPorMuerte(); //QUITO BOTONES
-                System.exit(0);;
+                //System.exit(0);;
             }
         }
 
