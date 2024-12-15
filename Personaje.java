@@ -26,6 +26,7 @@ public class Personaje {
 		} else /*if (CrearPersonajes.personajes.get(numJugador).getClase() == "duende" && CrearPersonajes.personajes.get(numJugador).getHabilidadActivada())*/ {
 			JOptionPane.showMessageDialog(null, "El jugador " + i + " (" + this.getClase() + ") ha intentado atacar a un duende usando su escudo, por lo que su ataque ha sido en vano");
 		}
+		this.habilidadActivada = false;
 	}
 	
 	void ataquePeroSinJOptionPanes(int numJugador) {		// Metido a petición de Manu
