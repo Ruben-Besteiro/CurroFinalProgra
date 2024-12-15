@@ -3,7 +3,7 @@ import javax.swing.JOptionPane;
 
 public class Bandido extends Personaje {
 	
-	public Bandido(String herramienta) {
+	public Bandido(String herramienta, int i) {
 		this.setClase("bandido");
 		this.setVida(40);
 		this.setHerramienta(herramienta);
@@ -23,13 +23,17 @@ public class Bandido extends Personaje {
 		}
 	}
 	
-	public void habilidad() {
-		for (int i = 0; i < CrearPersonajes.personajes.size(); i++) {
-			if (i != CrearPersonajes.personajes.indexOf(this)) {
-				CrearPersonajes.personajes.get(i).setVida(CrearPersonajes.personajes.get(i).getVida()-2);		// Hace 2 de daño a todo el lobby excepto a uno mismo (también a tu dúo / squad)
-				JOptionPane.showMessageDialog(null, "El " + this.getClase() + " ha atacado al jugador " + i + " con un daño de " + this.getDaño() + ". Le queda " + CrearPersonajes.personajes.get(i).getVida() + " de vida");
+	public void habilidad(int i) {
+		for (int j = 0; j < CrearPersonajes.personajes.size(); j++) {
+			try {
+				if (j != CrearPersonajes.personajes.indexOf(this)) {
+					CrearPersonajes.personajes.get(i).setVida(CrearPersonajes.personajes.get(j).getVida()-2);		// Hace 2 de daño a todo el lobby excepto a uno mismo (también a tu dúo / squad)				}
+				}
+			} catch (NullPointerException e) {
+				// No hace nada
 			}
 		}
+		JOptionPane.showMessageDialog(null, "El jugador " + i + " (bandido) ha apuñalado a todo el mundo y ha hecho 2 de daño");
 		this.setBolaDeFuego(false);
 	}
 }

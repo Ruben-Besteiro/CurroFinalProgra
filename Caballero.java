@@ -3,7 +3,7 @@ import javax.swing.JOptionPane;
 
 public class Caballero extends Personaje {
 	
-	public Caballero(String herramienta) {
+	public Caballero(String herramienta, int i) {
 		this.setClase("caballero");
 		this.setVida(100);
 		this.setHerramienta(herramienta);
@@ -23,16 +23,17 @@ public class Caballero extends Personaje {
 		}
 	}
 	
-	public void ataque(int numJugador) {		// El ataque básico del caballero es distinto según si el ataque es o no cargado
+	public void ataque(int numJugador, int i) {		// El ataque básico del caballero es distinto según si el ataque es o no cargado
 		if (!this.getBolaDeFuego() && !(CrearPersonajes.personajes.get(numJugador).getClase() == "duende" && CrearPersonajes.personajes.get(numJugador).getHabilidadActivada())) {
 			try {
+				int dañoCargado = this.getDaño() * 2;
 				if (this.getHabilidadActivada()) {			// Esto se ejecuta si el ataque está cargado (hace daño doble)
-					CrearPersonajes.personajes.get(numJugador).setVida(CrearPersonajes.personajes.get(numJugador).getVida() - CrearPersonajes.personajes.get(numJugador).getDaño() * 2);
-					JOptionPane.showMessageDialog(null, "El " + this.getClase() + " ha atacado al jugador " + numJugador + " con un daño de " + (this.getDaño() * 2) + ". Le queda " + CrearPersonajes.personajes.get(numJugador).getVida() + " de vida");
+					CrearPersonajes.personajes.get(numJugador).setVida(CrearPersonajes.personajes.get(numJugador).getVida() - dañoCargado);
+					JOptionPane.showMessageDialog(null, "El jugador " + i + " (caballero) ha atacado al jugador " + numJugador + " con un daño de " + (this.getDaño() * 2) + ". Le queda " + CrearPersonajes.personajes.get(numJugador).getVida() + " de vida");
 					this.setHabilidadActivada(false);
 				} else {							// Esto se ejecuta si no está cargado
 					CrearPersonajes.personajes.get(numJugador).setVida(CrearPersonajes.personajes.get(numJugador).getVida() - this.getDaño());
-					JOptionPane.showMessageDialog(null, "El " + this.getClase() + " ha atacado al jugador " + numJugador + " con un daño de " + this.getDaño() + ". Le queda " + CrearPersonajes.personajes.get(numJugador).getVida() + " de vida");
+					JOptionPane.showMessageDialog(null, "El jugador " + i + " (caballero) ha atacado al jugador " + numJugador + " con un daño de " + this.getDaño() + ". Le queda " + CrearPersonajes.personajes.get(numJugador).getVida() + " de vida");
 				}
 			} catch (NullPointerException e) {
 				JOptionPane.showMessageDialog(null, "Has intentado atacarle a un cadáver, por lo que se te saltará el turno");
@@ -45,8 +46,8 @@ public class Caballero extends Personaje {
 		}
 	}
 	
-	public void habilidad() {
-		JOptionPane.showMessageDialog(null, "El caballero ha cargado su ataque y hará el doble de daño en el siguiente turno");
+	public void habilidad(int i) {
+		JOptionPane.showMessageDialog(null, "El jugador " + i + " (caballero) ha cargado su ataque y hará el doble de daño en el siguiente turno");
 		this.setHabilidadActivada(true);
 		this.setBolaDeFuego(false);
 	}

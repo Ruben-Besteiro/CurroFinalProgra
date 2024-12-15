@@ -26,59 +26,59 @@ public class CrearPersonajes {					// Todo esto es hecho por Rubi
 		try {
 			switch(clase) {
 			case 0:
-				personajes.add(new Caballero("espada"));
+				personajes.add(new Caballero("espada", i));
 				break;
 			case 1:
-				personajes.add(new Caballero("hacha"));
+				personajes.add(new Caballero("hacha", i));
 				break;
 			case 2:
-				personajes.add(new Caballero("lanza"));
+				personajes.add(new Caballero("lanza", i));
 				break;
 			case 3:
-				personajes.add(new Caballero("cuchillo"));
+				personajes.add(new Caballero("cuchillo", i));
 				break;
 			case 4:
-				personajes.add(new Mago("espada"));
+				personajes.add(new Mago("espada", i));
 				break;
 			case 5:
-				personajes.add(new Mago("hacha"));
+				personajes.add(new Mago("hacha", i));
 				break;
 			case 6:
-				personajes.add(new Mago("lanza"));
+				personajes.add(new Mago("lanza", i));
 				break;
 			case 7:
-				personajes.add(new Mago("cuchillo"));
+				personajes.add(new Mago("cuchillo", i));
 				break;
 			case 8:
-				personajes.add(new Bandido("espada"));
+				personajes.add(new Bandido("espada", i));
 				break;
 			case 9:
-				personajes.add(new Bandido("hacha"));
+				personajes.add(new Bandido("hacha", i));
 				break;
 			case 10:
-				personajes.add(new Bandido("lanza"));
+				personajes.add(new Bandido("lanza", i));
 				break;
 			case 11:
-				personajes.add(new Bandido("cuchillo"));
+				personajes.add(new Bandido("cuchillo", i));
 				break;
 			case 12:
-				personajes.add(new Duende("espada"));
+				personajes.add(new Duende("espada", i));
 				break;
 			case 13:
-				personajes.add(new Duende("hacha"));
+				personajes.add(new Duende("hacha", i));
 				break;
 			case 14:
-				personajes.add(new Duende("lanza"));
+				personajes.add(new Duende("lanza", i));
 				break;
 			case 15:
-				personajes.add(new Duende("cuchillo"));
+				personajes.add(new Duende("cuchillo", i));
 				break;
 			default:
-				personajes.add(new Caballero("Espada"));
+				personajes.add(new Caballero("Espada", i));
 			}
 		} catch (NumberFormatException e) {
 			JOptionPane.showMessageDialog(null, "Lo que has introducido no es válido, por lo que se te ha asignado un caballero con una espada");
-			personajes.add(new Caballero("espada"));
+			personajes.add(new Caballero("espada", i));
 		}
 		JOptionPane.showMessageDialog(null, personajes.get(i).ToString(i));
 		personajes.get(i).Equals(i);

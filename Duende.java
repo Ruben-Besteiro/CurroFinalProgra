@@ -3,7 +3,7 @@ import javax.swing.JOptionPane;
 
 public class Duende extends Personaje {
 	
-	public Duende(String herramienta) {
+	public Duende(String herramienta, int i) {
 		this.setClase("duende");
 		this.setVida(80);
 		this.setHerramienta(herramienta);
@@ -23,12 +23,11 @@ public class Duende extends Personaje {
 		}
 	}
 	
-	public void habilidad() {
-		JOptionPane.showMessageDialog(null, "El duende ha activado su escudo y será inmune al daño el próximo turno");
+	public void habilidad(int i) {
+		JOptionPane.showMessageDialog(null, "El jugador " + i + " (duende) ha activado su escudo y será inmune al daño este turno");
 		if (!this.getHabilidadActivada()) {
 			this.setHabilidadActivada(true);
 		}
-		this.setHabilidadActivada(false);
 		this.setBolaDeFuego(false);
 	}
 }

@@ -11,28 +11,24 @@ public class Personaje {
 	private int vida;
 	private int daño;
 	
-	void ataque(int numJugador) {
-		//int numJugador = Integer.parseInt(JOptionPane.showInputDialog(null, "Elige a quién atacar"));
-		
+	void ataque(int numJugador, int i) {
 		if (!this.bolaDeFuego && !(CrearPersonajes.personajes.get(numJugador).getClase() == "duende" && CrearPersonajes.personajes.get(numJugador).getHabilidadActivada())) {
 			try {			// Esto se ejecuta cuando el jugador ataca
 				CrearPersonajes.personajes.get(numJugador).setVida(CrearPersonajes.personajes.get(numJugador).getVida() - this.getDaño());
-				JOptionPane.showMessageDialog(null, "El " + this.getClase() + " ha atacado al jugador " + numJugador + " con un daño de " + this.getDaño() + ". Le queda " + CrearPersonajes.personajes.get(numJugador).getVida() + " de vida");
+				JOptionPane.showMessageDialog(null, "El jugador " + i + " (" + this.getClase() + ") ha atacado al jugador " + numJugador + " con un daño de " + this.getDaño() + ". Le queda " + CrearPersonajes.personajes.get(numJugador).getVida() + " de vida");
 			} catch (NullPointerException e) {
-				JOptionPane.showMessageDialog(null, "Has intentado atacarle a un cadáver, por lo que se te saltará el turno");
+				JOptionPane.showMessageDialog(null, "El jugador " + i + " (" + this.getClase() + ") ha intentado atacar a un cadáver, lo cual no ha surtido efecto");
 			}
 		} else if (this.bolaDeFuego) {			// Si el jugador está quemado, el ataque no surte efecto y recibes daño
 			this.setVida(this.getVida()-30);
-			JOptionPane.showMessageDialog(null, "Has intentado atacar estando quemado, por lo que recibes 30 de daño. Te queda " + this.getVida() + " de vida");
+			JOptionPane.showMessageDialog(null, "El jugador " + i + " (" + this.getClase() + ") ha intentado atacar estando quemado. Le queda " + this.getVida() + " de vida");
 			this.setBolaDeFuego(false);
-		} else if (CrearPersonajes.personajes.get(numJugador).getClase() == "duende" && CrearPersonajes.personajes.get(numJugador).getHabilidadActivada()) {
-			JOptionPane.showMessageDialog(null, "Has elegido atacarle a un duende usando su escudo, por lo que tu ataque ha sido en vano");
+		} else /*if (CrearPersonajes.personajes.get(numJugador).getClase() == "duende" && CrearPersonajes.personajes.get(numJugador).getHabilidadActivada())*/ {
+			JOptionPane.showMessageDialog(null, "El jugador " + i + " (" + this.getClase() + ") ha intentado atacar a un duende usando su escudo, por lo que su ataque ha sido en vano");
 		}
 	}
 	
 	void ataquePeroSinJOptionPanes(int numJugador) {		// Metido a petición de Manu
-		//int numJugador = Integer.parseInt(JOptionPane.showInputDialog(null, "Elige a quién atacar"));
-		
 		if (!this.bolaDeFuego && !(CrearPersonajes.personajes.get(numJugador).getClase() == "duende" && CrearPersonajes.personajes.get(numJugador).getHabilidadActivada())) {
 			try {			// Esto se ejecuta cuando el jugador ataca
 				CrearPersonajes.personajes.get(numJugador).setVida(CrearPersonajes.personajes.get(numJugador).getVida() - this.getDaño());
@@ -47,7 +43,7 @@ public class Personaje {
 		}
 	}
 	
-	public void habilidad() {
+	public void habilidad(int i) {
 		// Esto está vacío porque cada clase tiene su propia habilidad
 	}
 	
