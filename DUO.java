@@ -137,7 +137,7 @@ public class DUO {
 	
 	private void Atacar(int posPlayer, int pos) {		//Metodo para atacar que llama al ataque de cada personaje
 		
-		personajes.get(posPlayer).ataque(pos);
+		personajes.get(posPlayer).ataque(pos, posPlayer);
 		
 	}
 	
@@ -168,7 +168,7 @@ public class DUO {
 	
 							}else {
 		
-								personajes.get(j).habilidad();
+								personajes.get(j).habilidad(j);
 		
 							}
 						}
@@ -189,7 +189,7 @@ public class DUO {
 	
 							}else {
 		
-								personajes.get(j).habilidad();
+								personajes.get(j).habilidad(j);
 		
 							}
 						}
@@ -239,7 +239,7 @@ public class DUO {
 		
 		}else {
 	
-			personajes.get(i).habilidad();
+			personajes.get(i).habilidad(i);
 	
 		}
 		
