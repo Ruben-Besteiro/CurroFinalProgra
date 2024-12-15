@@ -40,9 +40,9 @@ public class Caballero extends Personaje {
 			}
 		} else if (this.getBolaDeFuego()) {			// Si el jugador está quemado, el ataque no surte efecto y recibes daño
 			this.setVida(this.getVida()-30);
-			JOptionPane.showMessageDialog(null, "Has intentado atacar estando quemado, por lo que recibes 30 de daño. Te queda " + this.getVida() + " de vida");
+			JOptionPane.showMessageDialog(null, "El jugador " + i + " (caballero) ha intentado atacar estando quemado. Le queda " + this.getVida() + " de vida");
 		} else if (CrearPersonajes.personajes.get(numJugador).getClase() == "duende" && CrearPersonajes.personajes.get(numJugador).getHabilidadActivada()) {
-			JOptionPane.showMessageDialog(null, "Has elegido atacarle a un duende usando su escudo, por lo que tu ataque ha sido en vano");
+			JOptionPane.showMessageDialog(null, "El jugador " + i + " (caballero) ha elegido atacar a un duende usando su escudo, por lo que su ataque ha sido en vano");
 		}
 	}
 	
