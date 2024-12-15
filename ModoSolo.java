@@ -73,7 +73,7 @@ public class ModoSolo {
                                 eliminarJugador();
                                 eleccionBots();
                             } /*else {
-                                JOptionPane.showMessageDialog(null, "El objetivo seleccionado no es válido.", "Error", JOptionPane.ERROR_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "El objetivo seleccionado no es valido.", "Error", JOptionPane.ERROR_MESSAGE);
                             }*/
                         } catch (Exception ex) {
                             JOptionPane.showMessageDialog(null, "Se produjo un error al intentar atacar: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -140,7 +140,7 @@ public class ModoSolo {
                 try {
                 	agregarTextoPantalla("Personaje " + i + ": " + CrearPersonajes.personajes.get(i).ToString(i));	//PANTAKLLA TEXTOS
                 } catch (Exception e) {
-                    System.err.println("Error al intentar obtener la información del personaje " + i + ": " + e.getMessage());	//LO HE AÑADIDO POR QUE ME DABA ERRORES
+                    System.err.println("Error al intentar obtener la informacion del personaje " + i + ": " + e.getMessage());	//LO HE AÑADIDO POR QUE ME DABA ERRORES
                 }
             } else {	//SI ES NULL ES POR QUE ESTA MUERTO
                 System.out.println("Personaje " + i + ": ELIMINADO");
