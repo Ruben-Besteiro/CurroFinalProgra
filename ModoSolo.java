@@ -79,7 +79,7 @@ public class ModoSolo {
                                 eliminarJugador();
                                 eleccionBots();
                             } /*else {
-                                JOptionPane.showMessageDialog(null, "El objetivo seleccionado no es válido.", "Error", JOptionPane.ERROR_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "El objetivo seleccionado no es valido.", "Error", JOptionPane.ERROR_MESSAGE);
                             }*/
                         } catch (Exception ex) {
                             JOptionPane.showMessageDialog(null, "Se produjo un error al intentar atacar: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
