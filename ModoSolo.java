@@ -40,16 +40,12 @@ public class ModoSolo {
         pantallaTextos.setFont(new Font("Arial", Font.PLAIN, 16));
         pantallaTextos.setLineWrap(true);
         pantallaTextos.setWrapStyleWord(true);
-	    pantallaTextos.setBackground(Color.BLACK); //FONDO NEGRO
-        pantallaTextos.setForeground(Color.WHITE); //TEXTO BLANC
 
         JScrollPane scroll = new JScrollPane(pantallaTextos);
         //CALCULOS NECESARIOS PARA PONERLO EN EL CENTRO DE LA PANTALLA
         int pantallaAncho = 400; 
         int pantallaAlto = 200; 
         scroll.setBounds((panelAncho - pantallaAncho) / 2, (panelAlto - pantallaAlto) / 3, pantallaAncho, pantallaAlto); //CENTRADO
-
-	 scroll.setBorder(javax.swing.BorderFactory.createLineBorder(Color.RED, 3)); //BORDE ROJO DE 3 PX
 
         //BOTON ATACAR A LA IZQUIERDA
         JButton boton1 = new JButton("ATACAR");
@@ -61,25 +57,20 @@ public class ModoSolo {
             public void actionPerformed(ActionEvent e) {
                 String[] opciones = generarOpcionesAtaque();
                 if (opciones.length > 0) {
-                    int eleccion = JOptionPane.showOptionDialog(
+                    int eleccion = Integer.parseInt(JOptionPane.showInputDialog(
                         null, 
-                        "A quien deseas atacar?", 
-                        "Seleccionar tu objetivo", 
-                        JOptionPane.DEFAULT_OPTION, 
-                        JOptionPane.QUESTION_MESSAGE, 
-                        null, 
-                        opciones, 
-                        opciones[0]
-                    );
+                        "A quién deseas atacar?", 
+                        "Introduce tu objetivo"
+                    ));
                     if (eleccion >= 0) {
-                        int indiceObjetivo = eleccion + 1;
+                        int indiceObjetivo = eleccion;
                         try {
                             if (indiceObjetivo < CrearPersonajes.personajes.size() && CrearPersonajes.personajes.get(indiceObjetivo) != null) {
-                                CrearPersonajes.personajes.get(0).ataque(indiceObjetivo);
+                                CrearPersonajes.personajes.get(0).ataque(indiceObjetivo, 0);
                                 eliminarJugador();
                                 eleccionBots();
                             } /*else {
-                                JOptionPane.showMessageDialog(null, "El objetivo seleccionado no es valido.", "Error", JOptionPane.ERROR_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "El objetivo seleccionado no es válido.", "Error", JOptionPane.ERROR_MESSAGE);
                             }*/
                         } catch (Exception ex) {
                             JOptionPane.showMessageDialog(null, "Se produjo un error al intentar atacar: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -100,7 +91,7 @@ public class ModoSolo {
         boton2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
-                    CrearPersonajes.personajes.get(0).habilidad();	//LLAMO A LA FUCNION DE HABILIDAD DE RUBI
+                    CrearPersonajes.personajes.get(0).habilidad(0);	//LLAMO A LA FUCNION DE HABILIDAD DE RUBI
                     eliminarJugador();
                     eleccionBots();
                 } catch (Exception ex) {
@@ -146,7 +137,7 @@ public class ModoSolo {
                 try {
                 	agregarTextoPantalla("Personaje " + i + ": " + CrearPersonajes.personajes.get(i).ToString(i));	//PANTAKLLA TEXTOS
                 } catch (Exception e) {
-                    System.err.println("Error al intentar obtener la informacion del personaje " + i + ": " + e.getMessage());	//LO HE AÑADIDO POR QUE ME DABA ERRORES
+                    System.err.println("Error al intentar obtener la información del personaje " + i + ": " + e.getMessage());	//LO HE AÑADIDO POR QUE ME DABA ERRORES
                 }
             } else {	//SI ES NULL ES POR QUE ESTA MUERTO
                 System.out.println("Personaje " + i + ": ELIMINADO");
@@ -177,13 +168,13 @@ public class ModoSolo {
                         if (!objetivos.isEmpty()) {
                             int indiceObjetivo = objetivos.get(random.nextInt(objetivos.size()));
                             agregarTextoPantalla("BOT " + i + " HA ELEGIDO ATACAR A JUGADOR " + indiceObjetivo);
-                            CrearPersonajes.personajes.get(i).ataque(indiceObjetivo); //ATACA
+                            CrearPersonajes.personajes.get(i).ataque(indiceObjetivo, i); //ATACA
                         } else {
                             agregarTextoPantalla("BOT " + i + " NO TIENE OBJETIVOS DISPONIBLES.");
                         }
                     } else { //EL BOT DECIDE USAR HABILIDAD
                         agregarTextoPantalla("BOT " + i + " HA USADO SU HABILIDAD.");
-                        CrearPersonajes.personajes.get(i).habilidad(); //USA HABILIDAD
+                        CrearPersonajes.personajes.get(i).habilidad(i); //USA HABILIDAD
                     }
                 }
             } catch (Exception ex) {
@@ -233,7 +224,7 @@ public class ModoSolo {
         //CUANDO SOLO QUEDA UNO
         if (vivos == 1) {
             if (indiceGanador == 0) { //SI GANO YO 
-                agregarTextoPantalla("FELICIDADES!!! ¡ERES EL GANADOR!");	//MENSAJE DE LA PANTALLA DE TEXTOS
+                agregarTextoPantalla("¡FELICIDADES! ¡ERES EL GANADOR!");	//MENSAJE DE LA PANTALLA DE TEXTOS
                 borrarBotonesPorMuerte(); //DESACTIVO BOTONES
                 victoria = new SONIDOVICTORIA(); //INICIALIZO EL SONIDO
                 victoria.sonido(); //sUENA EL SONIDO UNA SOLA VEZ
@@ -282,4 +273,3 @@ public class ModoSolo {
     }
     
  }
-
