@@ -18,6 +18,15 @@ public class DUO {
 		
 				SimulacionDeJuego();
 				SimulacionCombateBots();
+				Ganado();
+				
+				if(Ganado()) {
+					
+					JOptionPane.showMessageDialog(null, "HABEIS GANADO!!");
+					System.exit(0);
+					
+				}
+				
 				MostrarPersonajes();
 			
 			}
@@ -49,8 +58,20 @@ public class DUO {
 				pos1 = randNum;
 				pos2 = randNum + 1;
 				
-				JOptionPane.showMessageDialog(null, "Os encontráis con otro duo formado por:\n" + DUOContrincante.get(0).ToString(randNum) + "\n" + DUOContrincante.get(1).ToString((randNum) + 1) + "\n TOCA LUCHAR!");
-			
+				if(DUOContrincante.get(0) != null && DUOContrincante.get(1) != null) {
+					
+					JOptionPane.showMessageDialog(null, "Os encontráis con otro duo formado por:\n" + DUOContrincante.get(0).ToString(pos1) + "\n" + DUOContrincante.get(0).ToString(pos2) + "\n TOCA LUCHAR!");
+				
+				}else if(DUOContrincante.get(0) != null && DUOContrincante.get(1) == null) {
+					
+					JOptionPane.showMessageDialog(null, "Os encontráis con otro duo formado por:\n" + DUOContrincante.get(0).ToString(pos1) + "\nJugador "+pos2+" (Está muerto)\n TOCA LUCHAR!");
+					
+				}else if(DUOContrincante.get(0) == null && DUOContrincante.get(1) != null) {
+					
+					JOptionPane.showMessageDialog(null, "Os encontráis con otro duo formado por:\n" + DUOContrincante.get(0).ToString(pos2) + "\nJugador "+pos1+" (Está muerto)\n TOCA LUCHAR!");
+					
+				}
+				
 				Decision(pos1, pos2);
 			
 			}else {
@@ -61,7 +82,19 @@ public class DUO {
 				pos1 = randNum;
 				pos2 = randNum - 1;
 			
-				JOptionPane.showMessageDialog(null, "Os encontráis con otro duo formado por:\n" + DUOContrincante.get(0).ToString(randNum) + "\n" + DUOContrincante.get(1).ToString((randNum) - 1) + "\n TOCA LUCHAR!");
+				if(DUOContrincante.get(0) != null && DUOContrincante.get(1) != null) {
+				
+					JOptionPane.showMessageDialog(null, "Os encontráis con otro duo formado por:\n" + DUOContrincante.get(0).ToString(pos1) + "\n" + DUOContrincante.get(1).ToString(pos2) + "\n TOCA LUCHAR!");
+				
+				}else if(DUOContrincante.get(0) != null && DUOContrincante.get(1) == null) {
+					
+					JOptionPane.showMessageDialog(null, "Os encontráis con otro duo formado por:\n" + DUOContrincante.get(0).ToString(pos1) + "\nJugador "+pos2+" (Está muerto)\n TOCA LUCHAR!");
+					
+				}else if(DUOContrincante.get(0) == null && DUOContrincante.get(1) != null) {
+					
+					JOptionPane.showMessageDialog(null, "Os encontráis con otro duo formado por:\n" + DUOContrincante.get(1).ToString(pos2) + "\nJugador "+pos1+" (Está muerto)\n TOCA LUCHAR!");
+					
+				}
 				
 				Decision(pos1, pos2);
 				
@@ -82,14 +115,14 @@ public class DUO {
 		
 		try {
 		
-			while((personajes.get(0).getVida() > 0 || personajes.get(1).getVida() > 0) && personajes.get(pos1).getVida() > 0 || personajes.get(pos2).getVida() > 0) {
+			while((personajes.get(0).getVida() > 0 || personajes.get(1).getVida() > 0) && personajes.get(pos1) != null || personajes.get(pos2) != null) {
 		
 				String[] opciones = {"ATACAR", "HABILIDAD"};
 				Random rand = new Random();
 		
 				for(int i = 0; i < 2; i++) {
 				
-					if(personajes.get(pos1).getVida() > 0 || personajes.get(pos2).getVida() > 0) {
+					if(personajes.get(pos1) != null || personajes.get(pos2) != null) {
 					
 						if(personajes.get(i).getVida() <= 0) {
 						
@@ -115,13 +148,13 @@ public class DUO {
 			
 				JOptionPane.showMessageDialog(null, "HABÉIS MUERTO\nOs ha matado el duo formado por: Jugador "+ pos1 +" y Jugador "+ pos2);
 				JOptionPane.showMessageDialog(null, "Los jugadores "+Integer.toString(0)+" y "+Integer.toString(1)+" han muerto");
-				Matar(0, 1);
+				//Matar(0, 1);
 			
-			}else if(personajes.get(pos1).getVida() <= 0 && personajes.get(pos2).getVida() <= 0) {
+			}else if(personajes.get(pos1) == null && personajes.get(pos2) == null) {
 			
 				JOptionPane.showMessageDialog(null, "HABÉIS CONSEGUIDO MATAR A VUESTROS CONTRINCANTES");
 				JOptionPane.showMessageDialog(null, "Los jugadores "+Integer.toString(pos1)+" y "+Integer.toString(pos2)+" han muerto");
-				Matar(pos1, pos2);
+				//Matar(pos1, pos2);
 			
 			}
 		
@@ -139,11 +172,17 @@ public class DUO {
 		
 		personajes.get(posPlayer).ataque(pos, posPlayer);
 		
+		if(personajes.get(pos).getVida() <= 0) {
+			
+			Matar(pos);
+			
+		}
+		
 	}
 	
 	public void DecisionContrincantes(int pos1, int pos2) {		//Metodo que de manera aleatoria decide que hace cada contrincante a los que te enfrentas
 		
-		if(personajes.get(pos1).getVida() <= 0 && personajes.get(pos2).getVida() <= 0) {
+		if((personajes.get(pos1) == null && personajes.get(pos2) == null)) {
 			
 			return;
 			
@@ -157,7 +196,7 @@ public class DUO {
 
 					for(int j = pos1; j < (pos2 + 1); j++) {
 		
-						if(personajes.get(j).getVida() > 0) {
+						if(personajes.get(j) != null && personajes.get(j).getVida() > 0) {
 					
 							int decision3 = rand.nextInt(2);
 
@@ -178,7 +217,7 @@ public class DUO {
 	
 					for(int j = pos2; j < (pos1 + 1); j++) {
 		
-						if(personajes.get(j).getVida() > 0) {
+						if(personajes.get(j) != null && personajes.get(j).getVida() > 0) {
 					
 							int decision3 = rand.nextInt(2);
 					
@@ -201,16 +240,15 @@ public class DUO {
 				
 	}
 	
-	public void Matar(int pos1, int pos2) {		//Metodo para matar a los personajes cuando no tengan vida suficiente
+	public void Matar(int pos1) {		//Metodo para matar a los personajes cuando no tengan vida suficiente
 		
 		personajes.set(pos1, null);
-		personajes.set(pos2, null);
 
 	}
 	
 	public void OpcionesJugadores(int decision, int i, int pos1, int pos2) {		//Metodo para que los jugadores decidan a que jugador quieren atacar 
 		
-		if(decision == JOptionPane.YES_OPTION && personajes.get(pos1).getVida() > 0 && personajes.get(pos2).getVida() > 0) {
+		if(decision == JOptionPane.YES_OPTION && personajes.get(pos1) != null && personajes.get(pos2) != null) {
 			
 			String[] op = {"Jugador "+ Integer.toString(pos1), "Jugador "+ Integer.toString(pos2)};
 			int decision2 = JOptionPane.showOptionDialog(null, "Jugador "+Integer.toString(i)+", a que jugador del duo contrincante deseas atacar?:\n", null, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, op, null);
@@ -225,13 +263,13 @@ public class DUO {
 				
 			}
 	
-		}else if(decision == JOptionPane.YES_OPTION && personajes.get(pos1).getVida() > 0 && personajes.get(pos2).getVida() <= 0){
+		}else if(decision == JOptionPane.YES_OPTION && personajes.get(pos1) != null && personajes.get(pos2) == null){
 			
 			String[] op = {"Jugador "+ Integer.toString(pos1)};
 			JOptionPane.showOptionDialog(null, "Jugador "+Integer.toString(i)+", a que jugador del duo contrincante deseas atacar?:\n", null, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, op, op);
 			Atacar(i, pos1);
 			
-		}else if(decision == JOptionPane.YES_OPTION && personajes.get(pos1).getVida() <= 0 && personajes.get(pos2).getVida() > 0) {
+		}else if(decision == JOptionPane.YES_OPTION && personajes.get(pos1) == null && personajes.get(pos2) != null) {
 		
 			String[] op = {"Jugador "+ Integer.toString(pos2)};
 			JOptionPane.showOptionDialog(null, "Jugador "+Integer.toString(i)+", a que jugador del duo contrincante deseas atacar?:\n", null, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, op, op);
@@ -308,12 +346,14 @@ public class DUO {
 		if(personajes.get(bot1).getVida() <= 0 && personajes.get(bot2).getVida() <= 0) {
 			
 			JOptionPane.showMessageDialog(null, "Los jugadores "+ bot3 +" y "+bot4+" han matado a los jugadores "+bot1+ " y "+bot2);
-			Matar(bot1, bot2);
+			Matar(bot1);
+			Matar(bot2);
 			
 		}else {
 			
 			JOptionPane.showMessageDialog(null, "Los jugadores "+ bot1 +" y "+bot2+" han matado a los jugadores "+bot3+ " y "+bot4);
-			Matar(bot3, bot4);
+			Matar(bot3);
+			Matar(bot4);
 			
 		}
 		
@@ -337,6 +377,22 @@ public class DUO {
 		}
 		
 		JOptionPane.showMessageDialog(null, pers);
+		
+	}
+	
+	public boolean Ganado() {		//Metodo que comprueba si han ganado los jugadores
+		
+		for (int i = 2; i < personajes.size(); i++) {
+			
+	        if (personajes.get(i) != null) {
+	        	
+	            return false;
+	            
+	        }
+	        
+	    }
+		
+		return true;
 		
 	}
 	
