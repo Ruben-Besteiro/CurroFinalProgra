@@ -227,12 +227,12 @@ public class ModoSolo {
         //CUANDO SOLO QUEDA UNO
         if (vivos == 1) {
             if (indiceGanador == 0) { //SI GANO YO 
-                agregarTextoPantalla("¡FELICIDADES! ¡ERES EL GANADOR!");	//MENSAJE DE LA PANTALLA DE TEXTOS
+                agregarTextoPantalla("FELICIDADES! SEGUN RUBI NO ERES PUTO :)");	//MENSAJE DE LA PANTALLA DE TEXTOS
                 borrarBotonesPorMuerte(); //DESACTIVO BOTONES
                 victoria = new SONIDOVICTORIA(); //INICIALIZO EL SONIDO
                 victoria.sonido(); //sUENA EL SONIDO UNA SOLA VEZ
             } else {
-                agregarTextoPantalla("El bot " + indiceGanador + " ha ganado la partida.");	//GANA UN BOT
+                agregarTextoPantalla("El bot " + indiceGanador + " ha ganado la partida y tu eres PUTO");	//GANA UN BOT
                 borrarBotonesPorMuerte(); //QUITO BOTONES
                 //System.exit(0);;
             }
